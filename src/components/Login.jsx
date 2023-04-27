@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './providers/AuthProvider';
+  
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const{signIn}= useContext(AuthContext);
     const handleLogin =event =>{
         event.preventDefault();
         const form = event.target;
@@ -12,16 +13,18 @@ const Login = () => {
         console.log(email, password);
         signIn(email,password)
         .then(result=>{
-          const loggedUser= result.user;
+          const loggedUser = result.user;
           console.log(loggedUser);
+          form.reset();
         })
         .catch(error=>{
           console.log(error);
         })
+        
     }
     return (
        
-            <div className="hero min-h-screen bg-base-200">
+  <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Please Login!</h1>
